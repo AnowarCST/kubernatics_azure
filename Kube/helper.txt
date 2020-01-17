@@ -1,0 +1,32 @@
+Execute: line 2 for login azure cli
+#LOGIN TO AZURE
+
+
+Execute: line 5
+#CREATE CONTAINER REGITRY
+az acr create --resource-group anowar --name anowar --sku Basic
+<group> = resource group name from azure portal
+<name> = a simple name like anowar
+
+Execute: line 42 as it is
+#CREATE SERVICE PRINCIPAL
+az ad sp create-for-rbac --skip-assignment
+
+Execute: line 53 
+<group> = resource group name from azure portal
+<name> = a simple name like anowar
+az role assignment create --assignee <spId> --scope <acrId> --role acrpull
+az acr show --resource-group anowar --name anowar --query "id" --output tsv
+
+Execute: line 58
+<spId> = AppID of 42 Lines output
+<acrId> = output of 53 line execution
+az role assignment create --assignee a36dfe10-febd-41f7-b575-47082c6bdec7 --scope /subscriptions/636369a7-dc41-434e-8c34-83cca114465d/resourceGroups/anowar/providers/Microsoft.ContainerRegistry/registries/anowar --role acrpull
+
+Then Create a Kubernatics Cluster in Azure Portal 
+
+Execute: 77 line
+<resource group> = name of resource 
+<name> = cluster name from portal 
+az aks get-credentials -g anowar -n cluster4anowar
+az aks browse -g anowar -n cluster4anowar
