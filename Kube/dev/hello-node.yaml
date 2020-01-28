@@ -32,7 +32,7 @@ spec:
         image: anowar.azurecr.io/aks-helloworldnode:#{Release.Artifacts.aks.BuildNumber}#
         env:
         - name: ASPNETCORE_ENVIRONMENT
-          value: "Development"        
+          value: "Development"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
