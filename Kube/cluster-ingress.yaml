@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - sufian.eastus.cloudapp.azure.com
-    secretName: sufian-eastus-cloudapp-azure-com-staging
+    - anowar.eastus.cloudapp.azure.com
+    secretName: anowar-eastus-cloudapp-azure-com-staging
   rules:
-  - host: sufian.eastus.cloudapp.azure.com
+  - host: anowar.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:
